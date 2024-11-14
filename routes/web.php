@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\Admin\ProjectController as GuestProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/projects', [AdminProjectController::class, 'index'])->name('projects.index');
+    Route::get('/types', [TypeController::class, 'index'])->name('types.index');
     Route::get('/projects/create', [AdminProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [AdminProjectController::class, 'store'])->name('projects.store');
     Route::get('/projects/{project}', [AdminProjectController::class, 'show'])->name('projects.show');
